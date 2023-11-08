@@ -66,9 +66,35 @@ public class Car implements Movable{
         dir = (dir + 1) % 4;
     }
 
-    // TODO fix this method according to lab pm
-    public void brake(double amount){
-        //decrementSpeed(amount);
+    public double getX() {
+        return x;
     }
+    public double getY() {return y;}
+    public int getDir() {return dir;}
+
+    public abstract double speedFactor();
+
+    public void incrementSpeed(double amount){
+        currentSpeed = Math.min(getCurrentSpeed() + speedFactor() * amount,enginePower);
+    }
+
+    public void decrementSpeed(double amount){
+        currentSpeed = Math.max(getCurrentSpeed() - speedFactor() * amount,0);
+    }
+
+    public void gas(double amount){
+        if (amount <= 1 && amount >= 0) {
+            incrementSpeed(amount);
+        }
+    }
+
+    public void brake(double amount){
+        if (amount <= 1 && amount >= 0) {
+            decrementSpeed(amount);
+        }
+    }
+
+
+
 }
 
