@@ -5,10 +5,10 @@ public abstract class Car implements Movable{
     public double enginePower; // Engine power of the car
     public double currentSpeed; // The current speed of the car
     private Color color; // Color of the car
-    public String modelName; // The car model name
-    private double x = 0;
-    private double y = 0;
-    private int dir = 0;
+    private String modelName; // The car model name
+    private double x = 0; // x-coordinate
+    private double y = 0; // y-coordinate
+    private int dir = 0; // Direction 0-North, 1-East, 2-South, 3-West
 
     public Car(int nrDoors, Color color, double enginePower, String modelName) {
         this.nrDoors = nrDoors;
@@ -45,16 +45,16 @@ public abstract class Car implements Movable{
         color = clr;
     }
     public void move(){
-        if (dir == 0) {
+        if (dir == 0) { // North
             x += getCurrentSpeed();
         }
-        else if (dir == 1) {
+        else if (dir == 1) { // East
             y += getCurrentSpeed();
         }
-        else if (dir == 2) {
+        else if (dir == 2) { // South
             x -= getCurrentSpeed();
         }
-        else {
+        else if (dir == 3) { // West
             y -= getCurrentSpeed();
         }
     }
